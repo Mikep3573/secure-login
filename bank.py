@@ -53,8 +53,6 @@ def transactions():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    """Login the user. TODO """
-
     with open(app.config['CREDENTIALS_FILE']) as fh:
         reader = csv.DictReader(fh)
         credentials = {row['username']:
