@@ -123,7 +123,7 @@ class Db:
         this more efficiently. Suffices for our purposes.
         :param cnx: sqlite3.Connection
         """
-        with open('./data/accounts.json', 'r') as f:
+        with open('data/accounts.json', 'r') as f:
             data = json.load(f)
         for record in data['RECORDS']:
             query = cls.INSERT_ACCOUNT.format(
@@ -144,7 +144,7 @@ class Db:
         do  this more efficiently. Suffices for our purposes.
         :param cnx: sqlite3.Connection
         """
-        with open('./data/transactions.json', 'r') as f:
+        with open('data/transactions.json', 'r') as f:
             data = json.load(f)
         for record in data['RECORDS']:
             query = cls.INSERT_TRANSACTION.format(

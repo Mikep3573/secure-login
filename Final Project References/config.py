@@ -6,7 +6,7 @@ import requests
 DEBUG = True
 SC = ";"
 TEMPLATES_AUTO_RELOAD = True
-DB_FILE = './instance/var/db/test.db'
+DB_FILE = 'instance/var/db/test.db'
 SECRET_KEY = 'This is not very secret, is it?'
 CREDENTIALS_FILE = 'instance/static/passwd'  # Ack! This is web-accessible!
 LESSON_CATALOG = {

@@ -8,19 +8,9 @@ I stored the menu choices as constants in this file as well as functions used in
 the menu.
 """
 
-
-class MenuOptions:
-    """ Constants used throughout the lab are stored here. They are put in a class called MenuOptions, so I could
-    use them in the match-case part of the convert_user_choice function. These constants are used throughout the lab
-    to represent a user's choice from the menu items presented after login. """
-
-    # Constants
-    EXIT = "0"
-    TIME_REPORTING = "1"
-    ACCOUNTING = "2"
-    PRODUCT_PERFORMANCE = "3"
-    PROJECTS = "4"
-    EMPLOYEE_MANAGEMENT = "5"
+# Dependencies
+from classes.options import *
+from classes.access_types import *
 
 
 def prompt_username(users):
@@ -63,9 +53,9 @@ def menu_choice():
     choice = input("Please enter an option number: ")  # Get initial user input
 
     # Check for validity
-    while choice != MenuOptions.EXIT and choice != MenuOptions.TIME_REPORTING and \
-            choice != MenuOptions.ACCOUNTING and choice != MenuOptions.PRODUCT_PERFORMANCE and \
-            choice != MenuOptions.PROJECTS and choice != MenuOptions.EMPLOYEE_MANAGEMENT:
+    while choice != MenuOption.EXIT and choice != MenuOption.TIME_REPORTING and \
+            choice != MenuOption.ACCOUNTING and choice != MenuOption.PRODUCT_PERFORMANCE and \
+            choice != MenuOption.PROJECTS and choice != MenuOption.EMPLOYEE_MANAGEMENT:
         print("Not valid choice")  # Give error message if choice not valid
         choice = input("Please re-enter an option number: ")  # Re-prompt if choice not valid
 
@@ -110,7 +100,7 @@ def re_prompt_menu():
 
     # Exit the program if answer was no
     else:
-        return MenuOptions.EXIT
+        return MenuOption.EXIT
 
 
 def convert_user_choice(choice):
@@ -121,15 +111,31 @@ def convert_user_choice(choice):
     # Match numerical choice to the english version of it
     # Return the english word
     match choice:
-        case MenuOptions.EXIT:
+        case MenuOption.EXIT:
             return "exit"
-        case MenuOptions.TIME_REPORTING:
+        case MenuOption.TIME_REPORTING:
             return "time reporting"
-        case MenuOptions.ACCOUNTING:
+        case MenuOption.ACCOUNTING:
             return "accounting"
-        case MenuOptions.PRODUCT_PERFORMANCE:
+        case MenuOption.PRODUCT_PERFORMANCE:
             return "product performance"
-        case MenuOptions.PROJECTS:
+        case MenuOption.PROJECTS:
             return "projects"
-        case MenuOptions.EMPLOYEE_MANAGEMENT:
+        case MenuOption.EMPLOYEE_MANAGEMENT:
             return "employee management"
+
+
+def convert_access_type(access_type: str) -> AccessType:
+    """ TODO: Write this. """
+
+    # Match the string access type to an AccessType
+    match access_type:
+        case "admin":
+            return AccessType.ADMIN
+        case "limited":
+            return AccessType.LIMITED
+        case "none":
+            return AccessType.NONE
+
+    # Return NULL type if none found
+    return AccessType.NULL

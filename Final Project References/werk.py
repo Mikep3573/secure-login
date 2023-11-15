@@ -3,7 +3,6 @@ Werkzeug launcher for application
 """
 
 import traceback
-
 from bank import app
 
 if __name__ == '__main__':

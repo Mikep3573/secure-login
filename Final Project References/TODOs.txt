@@ -1,0 +1,17 @@
+Start with HTML, just get a relatively decent website working to start
+1. ---HTML---
+-Website interface to login from
+-Make sure users get three attempts MAX
+-Create field for account creation
+-Input validation
+-Require password to be: min: 8 chars, max: 25 chars, if outside limits, return error message
+--at least one lowercase letter, at least one uppercase letter, at least one special character
+-Strong password generator
+
+2. ---DB---
+-Research SQLite
+-Build a database that is able to both be read from and written to in terms of usernames and passwords
+-Passwords must be salted (Check Lab 6 Requirements)
+-Connect to web UI
+
+3. ---Connect DB to HTML---

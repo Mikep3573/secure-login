@@ -6,7 +6,6 @@ fresh database to play around with.
 """
 
 import os
-
 from db import Db
 
 DIRS = ['instance/var/db',
