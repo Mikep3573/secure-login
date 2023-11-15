@@ -3,7 +3,7 @@ AccessType Class
 Michael Piscione
 CS 2660/Fall 2023
 
-TODO: Write this
+Consists of AccessType class constants which represent a user's access level for the intranet system.
 """
 
 

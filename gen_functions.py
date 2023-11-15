@@ -126,7 +126,7 @@ def convert_user_choice(choice):
 
 
 def convert_access_type(access_type: str) -> AccessType:
-    """ TODO: Write this. """
+    """ convert_access_type takes a string access type and converts it to an AccessType constant. """
 
     # Match the string access type to an AccessType
     match access_type:

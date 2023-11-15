@@ -3,7 +3,7 @@ MenuOption Class
 Michael Piscione
 CS 2660/Fall 2023
 
-TODO: Write this
+Consists of MenuOption class constants which represent a user's access level for the intranet system.
 """
 
 

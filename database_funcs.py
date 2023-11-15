@@ -3,7 +3,8 @@ Database Functions
 Michael Piscione
 CS 2660/Fall 2023
 
-TODO: Write this
+Database Functions consists of mainly general purpose functions meant to interact with a database called
+'intranet_users', specifically the table labeled 'users'. It creates and queries the database via the Python SQLite API.
 
 NOTE: Most of this code comes from Prof. Eddy's SQLite example.
 """
