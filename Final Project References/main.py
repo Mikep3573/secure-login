@@ -13,12 +13,12 @@ import gen_functions
 
 # Create dictionary for menu options and access levels
 menu_options = {
-    gen_functions.MenuOptions.EXIT: ["admin", "limited", "none"],
-    gen_functions.MenuOptions.TIME_REPORTING: ["admin", "limited", "none"],
-    gen_functions.MenuOptions.ACCOUNTING: ["admin", "limited"],
-    gen_functions.MenuOptions.PRODUCT_PERFORMANCE: ["admin", "limited"],
-    gen_functions.MenuOptions.PROJECTS: ["admin"],
-    gen_functions.MenuOptions.EMPLOYEE_MANAGEMENT: ["admin"]
+    gen_functions.MenuOption.EXIT: ["admin", "limited", "none"],
+    gen_functions.MenuOption.TIME_REPORTING: ["admin", "limited", "none"],
+    gen_functions.MenuOption.ACCOUNTING: ["admin", "limited"],
+    gen_functions.MenuOption.PRODUCT_PERFORMANCE: ["admin", "limited"],
+    gen_functions.MenuOption.PROJECTS: ["admin"],
+    gen_functions.MenuOption.EMPLOYEE_MANAGEMENT: ["admin"]
 }
 
 if __name__ == "__main__":
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     choice = gen_functions.menu_choice()
 
     # While choice not exit
-    while choice != gen_functions.MenuOptions.EXIT:
+    while choice != gen_functions.MenuOption.EXIT:
         # Grab the user's access level
         access_level = users[username][1]
 
