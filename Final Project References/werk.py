@@ -3,7 +3,7 @@ Werkzeug launcher for application
 """
 
 import traceback
-from bank import app
+from intranet_flask import app
 
 if __name__ == '__main__':
 
