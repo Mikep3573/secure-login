@@ -16,7 +16,7 @@ from intranet_flask import app
 def main():
     """ Creating a main for aesthetic purposes. """
     try:  # Attempt to run the Flask app using localhost port 8097 (temporary port)
-        app.run(debug=app.debug, host='localhost', port=8097)
+        app.run(debug=True, host='localhost', port=8097)
     except Exception:  # Print any errors that occur on launch
         traceback.print_exc()
 

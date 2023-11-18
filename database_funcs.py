@@ -21,7 +21,7 @@ def create_db() -> bool:
 
     # Attempt to create Database
     try:
-        conn = sqlite3.connect('intranet_users.db')  # Connect to intranet_users.db
+        conn = sqlite3.connect('db/intranet_users.db')  # Connect to intranet_users.db
         cur = conn.cursor()  # Create a cursor for the database
 
         # Initialize the database to have a table of users with columns representing username, password, access_type
@@ -53,7 +53,7 @@ def check_user_info(username: str, password: str) -> AccessType:
     # Attempt to query database
     try:
         # Connect to database and establish a cursor
-        conn = sqlite3.connect('intranet_users.db')
+        conn = sqlite3.connect('db/intranet_users.db')
         cur = conn.cursor()
 
         # Query for entries containing that username
@@ -82,7 +82,7 @@ def insert_user_info(username: str, password: str, access_type: AccessType) -> b
 
     # Attempt to insert validated user input
     try:
-        conn = sqlite3.connect('intranet_users.db')  # Connect to intranet_users.db
+        conn = sqlite3.connect('db/intranet_users.db')  # Connect to intranet_users.db
         cur = conn.cursor()  # Create a cursor for the database
 
         # Store data to insert into table
@@ -110,7 +110,7 @@ def insert_user_info(username: str, password: str, access_type: AccessType) -> b
 
 
 print(check_user_info("Daniel_L", "019283"))
-con = sqlite3.connect('intranet_users.db')  # Connect to intranet_users.db
+con = sqlite3.connect('db/intranet_users.db')  # Connect to intranet_users.db
 cr = con.cursor()  # Create a cursor for the database
 
 cr.execute("SELECT * FROM users")
