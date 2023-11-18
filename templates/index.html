@@ -1,3 +1,4 @@
+<!--TODO: Doc this-->
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
@@ -7,20 +8,25 @@
         <title>Intranet Login</title>
     </head>
     <body>
-        <div class="wrapper">
-            <form action="/intranet_menu">
+        <form method="POST">
+            <div class="wrapper">
                 <h1>Company Intranet Login</h1>
-                <div class="input-box">
-                    <input type="text" placeholder="Username" required>
-                </div>
-                <div class="input-box">
-                    <input type="password" placeholder="Password" required>
-                </div>
-                <button type="Submit" class="btn">Login</button>
-                <div class="register-link">
-                    <p>Don't have an account? <a href="#">Register</a></p>
-                </div>
-            </form>
+                    <div class="input-box">
+                        <input type="text" placeholder="Username" name="username" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <div class="register-link">
+                        <p>Don't have an account? <a href="#">Register</a></p>
+                    </div>
+            </div>
+        </form>
+        {% if user_bool == False or pass_bool == False %}
+        <div class="error">
+            <p>Username or Password Incorrect</p>
         </div>
+        {% endif %}
     </body>
 </html>

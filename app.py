@@ -7,16 +7,24 @@ TODO: Write this
 """
 
 # Dependencies
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from database_funcs import *
 
 # Create a Flask app
 app = Flask(__name__, static_folder='static')
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def login():
     """Intranet Login Page """
-    return render_template("index.html")
+    user_bool = True
+    pass_bool = True
+    request_method = request.method
+    if request_method == "POST":
+        print('---------')
+        print(request.form)
+        print('---------')
+    return render_template("index.html", user_bool=user_bool, pass_bool=pass_bool)
 
 
 @app.route("/intranet_menu")

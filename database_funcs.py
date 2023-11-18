@@ -14,6 +14,9 @@ import sqlite3
 from classes.access_types import *
 from gen_functions import *
 
+# Database Made constant -> used to determine whether to create database
+DB_MADE = False
+
 
 def create_db() -> bool:
     """ Creates the 'intranet_users' database (for usernames and passwords) with a table 'users'. Returns True if
@@ -35,7 +38,7 @@ def create_db() -> bool:
         return True
 
     # Do exception handling
-    except BaseException:  # Return False upon unsuccessful completion
+    except BaseException:  # Return False upon unsuccessful completion (or database has been created already)
         return False
     finally:  # Close the objects
         if cur is not None:
@@ -108,7 +111,7 @@ def insert_user_info(username: str, password: str, access_type: AccessType) -> b
         if conn is not None:
             conn.close()
 
-
+insert_user_info("Daniel_L", "019283", AccessType.ADMIN)
 print(check_user_info("Daniel_L", "019283"))
 con = sqlite3.connect('db/intranet_users.db')  # Connect to intranet_users.db
 cr = con.cursor()  # Create a cursor for the database
