@@ -16,6 +16,10 @@ app = Flask(__name__, static_folder='static')
 @app.route("/", methods=['GET', 'POST'])
 def login():
     """Intranet Login Page """
-    return render_template("index.html",
-                           title="Company Intranet Login",
-                           heading="Company Intranet Login")
+    return render_template("index.html")
+
+
+@app.route("/intranet_menu")
+def intranet_menu():
+    """ Intranet Menu Page """
+    return render_template("intranet_menu.html")
