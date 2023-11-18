@@ -91,3 +91,7 @@ body {
 .register-link p a:hover{
     text-decoration: underline;
 }
+
+.accepted_title {
+    align-content: space-around;
+}

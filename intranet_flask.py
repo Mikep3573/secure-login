@@ -13,7 +13,7 @@ from flask import Flask, render_template
 app = Flask(__name__, static_folder='static')
 
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/")
 def login():
     """Intranet Login Page """
     return render_template("index.html")
@@ -23,3 +23,9 @@ def login():
 def intranet_menu():
     """ Intranet Menu Page """
     return render_template("intranet_menu.html")
+
+
+@app.route("/accepted_choice")
+def accepted_choice():
+    """ Displays when user is allowed to visit menu choice """
+    return render_template("accepted_choice.html")
