@@ -24,8 +24,6 @@ def login():
         # Get the username/password submitted
         username = request.form.get("username")
         password = request.form.get("password")
-        create_pass = request.form.get("create_pass")
-        print(create_pass)
 
         # Check if that combination does not exist in the database, redirect to /intranet_menu if it does
         if check_user_info(username, password) == AccessType.NULL:
@@ -33,11 +31,10 @@ def login():
         else:
             return redirect("/intranet_menu")
 
-    # Check if the user wanted to generate a strong password
+    # Check if the user wanted to generate a strong password and render accordingly
     create_pass = request.args.get("create_pass")
     if create_pass:
-        return render_template("index.html",
-                               create_pass=True, password=create_password(), incorrect=False)
+        return render_template("index.html", create_pass=True, password=create_password())
 
     return render_template("index.html")  # Render index.html if GET method and create_pass != True
 

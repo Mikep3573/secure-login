@@ -5,7 +5,7 @@ CS 2660/Fall 2023
 
 This constitutes the 'main' function. Use this to launch the flask app.
 
-NOTE: Same werkzeug launcher as used in bank labs with minor changes.
+NOTE: Same launcher as used in bank labs with minor changes.
 """
 
 # Dependencies
