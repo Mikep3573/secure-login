@@ -11,10 +11,16 @@
         <div class="wrapper">
             <h1  class="accepted_title">Welcome!</h1>
             <button type="button" class="menu-btn" onclick="window.location.href = '/accepted_choice'">Time Reporting</button>
+            {% if access_type == "limited" %}
             <button type="button" class="menu-btn" onclick="window.location.href = '/accepted_choice'">Accounting</button>
-            <button type="button" class="menu-btn" onclick="window.location.href = '/accepted_choice'">Product Performance</button>
             <button type="button" class="menu-btn" onclick="window.location.href = '/accepted_choice'">Projects</button>
+            {% endif %}
+            {% if access_type == "admin" %}
+            <button type="button" class="menu-btn" onclick="window.location.href = '/accepted_choice'">Product Performance</button>
             <button type="button" class="menu-btn" onclick="window.location.href = '/accepted_choice'">Employee Management</button>
+            <button type="button" class="menu-btn" onclick="window.location.href = '/accepted_choice'">Accounting</button>
+            <button type="button" class="menu-btn" onclick="window.location.href = '/accepted_choice'">Projects</button>
+            {% endif %}
             <button type="button" class="menu-btn" onclick="window.location.href = '/'">Exit</button>
         </div>
     </body>

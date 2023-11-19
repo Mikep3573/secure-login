@@ -9,7 +9,6 @@ the menu.
 """
 
 # Dependencies
-from classes.options import *
 from classes.access_types import *
 from random import *
 
@@ -65,28 +64,6 @@ def check_password(password: str) -> bool:
     if length and num and lower and upper and special:
         return True
     return False
-
-
-def convert_user_choice(choice):
-    """ Converts the user's choice (number 0-5 as string) to an english menu option. Used for printing the user's choice
-     as a word not a string number. Takes parameter 'choice', a string, for conversion.
-     Returns the english menu option. """
-
-    # Match numerical choice to the english version of it
-    # Return the english word
-    match choice:
-        case MenuOption.EXIT:
-            return "exit"
-        case MenuOption.TIME_REPORTING:
-            return "time reporting"
-        case MenuOption.ACCOUNTING:
-            return "accounting"
-        case MenuOption.PRODUCT_PERFORMANCE:
-            return "product performance"
-        case MenuOption.PROJECTS:
-            return "projects"
-        case MenuOption.EMPLOYEE_MANAGEMENT:
-            return "employee management"
 
 
 def convert_access_type(access_type: str) -> AccessType:

@@ -34,13 +34,16 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
 
+        # Check access type of user (null if no account)
+        access_type = check_user_info(username, password)
+
         # Check if that combination does not exist in the database, redirect to /intranet_menu if it does
-        if check_user_info(username, password) == AccessType.NULL:
+        if access_type == AccessType.NULL:
             attempts += 1  # Increment attempts for every successive failed login
             return render_template("index.html", incorrect=True, attempts=attempts)
         else:
             attempts = 0  # Reset attempts on successful login
-            return redirect("/intranet_menu")
+            return redirect(f"/intranet_menu?access_type={access_type}")
 
     # Check if the user wanted to generate a strong password and render accordingly
     create_pass = request.args.get("create_pass")
@@ -98,7 +101,12 @@ def register():
 @app.route("/intranet_menu")
 def intranet_menu():
     """ TODO: Write this """
-    return render_template("intranet_menu.html")
+    # Get the user's access type
+    access_type = request.args.get("access_type")
+    print(access_type)
+
+    # Render intranet menu with appropriate options
+    return render_template("intranet_menu.html", access_type=access_type)
 
 
 @app.route("/accepted_choice")

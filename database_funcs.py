@@ -139,6 +139,3 @@ def check_table(table: str) -> bool:
             cur.close()
         if conn is not None:
             conn.close()
-
-
-insert_user_info("n", "n", AccessType.ADMIN)
