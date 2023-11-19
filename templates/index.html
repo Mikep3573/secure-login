@@ -17,9 +17,17 @@
                     <div class="input-box">
                         <input type="password" placeholder="Password" name="password" required>
                     </div>
+                    {% if attempts < 3 %}
                     <button type="submit" class="btn">Login</button>
+                    {% endif %}
+                    {% if attempts >= 3%}
+                    <div class="too-many-attempts">
+                        <p>Too Many Attempts</p>
+                        <p>LOCKED OUT</p>
+                    </div>
+                    {% endif %}
                     <div class="register-link">
-                        <p>Don't have an account? <a href="#">Register</a></p>
+                        <p>Don't have an account? <a href="/register">Register</a></p>
                     </div>
                     <div class="password-generator">
                         <p>Create strong password? <a href="/?create_pass=True">Create</a></p>

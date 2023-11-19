@@ -1,0 +1,57 @@
+<!--TODO: Doc this-->
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/style.css">
+        <title>Register Account</title>
+    </head>
+    <body>
+        <form method="POST">
+            <div class="wrapper">
+                <h1>Create Account</h1>
+                    <div class="input-box">
+                        <input type="text" placeholder="Username" name="username" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <button type="button" class="menu-btn" onclick="window.location.href = '/'">Return to Login</button>
+                    <div class="password-generator">
+                        <p>Create strong password? <a href="/register?create_pass=True">Create</a></p>
+                    </div>
+                    {% if create_pass == True %}
+                    <div class="strong-pass">
+                        <p>{{ password }}</p>
+                    </div>
+                    {% endif %}
+                    {% if invalid_pass == True %}
+                    <div class="error">
+                        <p>Invalid Password</p>
+                        <p>Password Needs: </p>
+                        <ul>
+                            <li>Min: 8 Chars</li>
+                            <li>Max: 25 Chars</li>
+                            <li>At Least One: Number</li>
+                            <li>At Least One: Lowercase Letter</li>
+                            <li>At Least One: Uppercase Letter</li>
+                            <li>At Least One: Special Character</li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                    {% if invalid_user == True %}
+                    <div class="error">
+                        <p>Username Taken</p>
+                    </div>
+                    {% endif %}
+                    {% if invalid_user == False %}
+                    <div class="success">
+                        <p>Registered!</p>
+                    </div>
+                    {% endif %}
+            </div>
+        </form>
+    </body>
+</html>

@@ -11,7 +11,6 @@ the menu.
 # Dependencies
 from classes.options import *
 from classes.access_types import *
-from os import urandom
 from random import *
 
 
