@@ -11,6 +11,8 @@ the menu.
 # Dependencies
 from classes.access_types import *
 from random import *
+from os import urandom
+import hashlib
 
 
 def create_password() -> str:
@@ -64,6 +66,30 @@ def check_password(password: str) -> bool:
     if length and num and lower and upper and special:
         return True
     return False
+
+
+def hash_pw(plain_text: str) -> str:
+    """ TODO: Write this """
+    # Generate a pseudorandom salt
+    salt = urandom(20)  # Create a pseudorandom set of 20 bytes
+    salt = salt.hex()  # 20 bytes converted into hex produces 40 characters
+    hashable = salt + plain_text  # Concatenate salt and plain_text
+    hashable = hashable.encode('utf-8')  # convert to bytes
+    this_hash = hashlib.sha1(hashable).hexdigest()  # hash w/ SHA-1 and hex-digest
+
+    # Prepend hash and return
+    return salt + this_hash
+
+
+def check_hashed(plain_text: str, salt: str, hashed: str) -> bool:
+    """ TODO: Write this """
+    # Hash salt + plain text
+    hashable = salt + plain_text
+    hashable.encode('utf-8')
+    this_hash = hashlib.sha1(hashable).hexdigest()
+
+    # Return True or False if stored hash equals new hash
+    return this_hash == hashed
 
 
 def convert_access_type(access_type: str) -> AccessType:
