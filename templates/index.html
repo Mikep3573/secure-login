@@ -21,12 +21,20 @@
                     <div class="register-link">
                         <p>Don't have an account? <a href="#">Register</a></p>
                     </div>
+                    <div class="password-generator">
+                        <p>Create strong password? <a href="/?create_pass=True">Create</a></p>
+                    </div>
+                    {% if create_pass == True %}
+                    <div class="strong-pass">
+                        <p>{{ password }}</p>
+                    </div>
+                    {% endif %}
+                    {% if incorrect == True %}
+                    <div class="error">
+                        <p>Username or Password Incorrect</p>
+                    </div>
+                    {% endif %}
             </div>
         </form>
-        {% if user_bool == False or pass_bool == False %}
-        <div class="error">
-            <p>Username or Password Incorrect</p>
-        </div>
-        {% endif %}
     </body>
 </html>

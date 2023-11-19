@@ -18,10 +18,7 @@ def main():
     """ Creating a main for aesthetic purposes. """
     try:
         # Attempt to create database and signal to run app
-        result = False
-        if not DB_MADE:
-            result = create_db()
-        if result:
+        if create_db():
             # Attempt to run the Flask app using localhost port 8097 (temporary port)
             app.run(debug=True, host='localhost', port=8097)
     except Exception:  # Print any errors that occur on launch

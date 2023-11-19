@@ -6,7 +6,7 @@ CS 2660/Fall 2023
 Database Functions consists of mainly general purpose functions meant to interact with a database called
 'intranet_users', specifically the table labeled 'users'. It creates and queries the database via the Python SQLite API.
 
-NOTE: Most of this code comes from Prof. Eddy's SQLite example.
+NOTE: Some of this code comes from Prof. Eddy's SQLite example.
 """
 
 # Dependencies
@@ -20,31 +20,34 @@ DB_MADE = False
 
 def create_db() -> bool:
     """ Creates the 'intranet_users' database (for usernames and passwords) with a table 'users'. Returns True if
-    created successfully, False otherwise. Takes nothing as input. """
+    created successfully (or already exists), False otherwise. Takes nothing as input. """
+    # Check if table exists before creating the table
+    if not check_table("users"):
+        # Attempt to create Database
+        try:
+            conn = sqlite3.connect('db/intranet_users.db')  # Connect to intranet_users.db
+            cur = conn.cursor()  # Create a cursor for the database
 
-    # Attempt to create Database
-    try:
-        conn = sqlite3.connect('db/intranet_users.db')  # Connect to intranet_users.db
-        cur = conn.cursor()  # Create a cursor for the database
+            # Initialize the database to have a table of users with columns representing username, password, access_type
+            # Ensure no two users can have the same username
+            cur.execute("CREATE TABLE users(username text UNIQUE, password text, access_type text)")
 
-        # Initialize the database to have a table of users with columns representing username, password, access_type
-        # Ensure no two users can have the same username
-        cur.execute("CREATE TABLE users(username text UNIQUE, password text, access_type text)")
+            # Commit the table
+            conn.commit()
 
-        # Commit the table
-        conn.commit()
+            # Successfully completed
+            return True
 
-        # Successfully completed
+        # Do exception handling
+        except BaseException:  # Return False upon unsuccessful completion (or database has been created already)
+            return False
+        finally:  # Close the objects
+            if cur is not None:
+                cur.close()
+            if conn is not None:
+                conn.close()
+    else:  # Return True, table already exists
         return True
-
-    # Do exception handling
-    except BaseException:  # Return False upon unsuccessful completion (or database has been created already)
-        return False
-    finally:  # Close the objects
-        if cur is not None:
-            cur.close()
-        if conn is not None:
-            conn.close()
 
 
 def check_user_info(username: str, password: str) -> AccessType:
@@ -111,10 +114,31 @@ def insert_user_info(username: str, password: str, access_type: AccessType) -> b
         if conn is not None:
             conn.close()
 
-insert_user_info("Daniel_L", "019283", AccessType.ADMIN)
-print(check_user_info("Daniel_L", "019283"))
-con = sqlite3.connect('db/intranet_users.db')  # Connect to intranet_users.db
-cr = con.cursor()  # Create a cursor for the database
 
-cr.execute("SELECT * FROM users")
-print(cr.fetchall())
+def check_table(table: str) -> bool:
+    """ check_table takes a string input representing a table name and checks if that table exists in
+    'intranet_users.db'. """
+    try:
+        # Connect to database and establish a cursor
+        conn = sqlite3.connect('db/intranet_users.db')
+        cur = conn.cursor()
+
+        # Query to see if table exists
+        cur.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table}'")
+
+        # Return True or False if table exists
+        if not cur.fetchone():
+            return False
+        return True
+
+    # Print helpful error message upon unsuccessful completion
+    except BaseException:
+        print("ERROR: Could not connect to database")
+    finally:  # Close the objects
+        if cur is not None:
+            cur.close()
+        if conn is not None:
+            conn.close()
+
+
+insert_user_info("n", "n", AccessType.ADMIN)

@@ -96,6 +96,28 @@ body {
     margin: 20px 0 15px;
 }
 
+.wrapper .error {
+    text-align: center;
+    color: red;
+}
+
+.wrapper .strong-pass {
+    text-align: center;
+    color: #fff;
+}
+
+.wrapper .password-generator {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.password-generator p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
 .register-link p a {
     color: #fff;
     text-decoration: none;
@@ -106,6 +128,7 @@ body {
     text-decoration: underline;
 }
 
-.accepted_title {
-    align-content: space-around;
+.password-generator p a:hover{
+    text-decoration: underline;
 }
+
