@@ -18,7 +18,8 @@
                         <input type="password" placeholder="Password" name="password" required>
                     </div>
                     <button type="submit" class="btn">Register</button>
-                    <button type="button" class="menu-btn" onclick="window.location.href = '/'">Return to Login</button>
+                    <!-- TODO: Fix this -->
+                    <button type="button" class="menu-btn" onclick="window.location.href = '/?attempts='{{ attempts }}">Return to Login</button>
                     <div class="password-generator">
                         <p>Create strong password? <a href="/register?create_pass=True">Create</a></p>
                     </div>

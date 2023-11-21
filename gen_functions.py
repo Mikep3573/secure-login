@@ -3,9 +3,8 @@ General Functions
 Michael Piscione
 CS 2660/Fall 2023
 
-gen_functions.py is a supplemental file used to store functions and constants used throughout the lab.
-I stored the menu choices as constants in this file as well as functions used in getting user input and displaying
-the menu.
+gen_functions.py is a supplemental file used to store functions used throughout the project.
+Functions consist of checking password requirements and hashing passwords (among others).
 """
 
 # Dependencies
@@ -16,22 +15,25 @@ import hashlib
 
 
 def create_password() -> str:
-    """ TODO: Write this """
+    """ create_password randomly generates a password according to the password specifications (can be seen in
+    check_password). It does this by randomly selecting characters from a list of all possible characters. If
+    the requirements are NOT met, a new password is created until they are. The 'strong' password is returned. """
     # Create a return string
     return_string = ''
 
     # Decide length
     length = randint(8, 25)
 
-    # Create a string variable for all possible characters in the password
+    # Create a string variable for all possible characters in a password
     all_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()?-+[]{};:'",./\\?><|`~"
 
     # Create a temporary random password
     temp_pass = return_string.join(choice(all_chars) for i in range(length))
 
-    # Continuously check if temp_pass meets requirements
+    # Continuously create a new password and check if it meets requirements
+    # Stop when it does
     while not check_password(temp_pass):
-        return_string = ''
+        return_string = ''  # Reset return_string
         temp_pass = return_string.join(choice(all_chars) for i in range(length))
 
     # Return the generated password
@@ -39,7 +41,8 @@ def create_password() -> str:
 
 
 def check_password(password: str) -> bool:
-    """ TODO: Write this """
+    """ check_password tests if a password has 25 >= length >= 8, at least one number, at least one lowercase letter,
+     at least one uppercase letter, and at least one special character. Returns True or False accordingly. """
     # Create boolean flags for all password conditions
     length = False
     num = False
@@ -69,20 +72,23 @@ def check_password(password: str) -> bool:
 
 
 def hash_pw(plain_text: str) -> str:
-    """ TODO: Write this """
+    """ hash_pw takes a plain text password, generates a pseudorandom salt of 40 hex characters, hashes
+    salt + plain_text, and returns salt + hashed. """
     # Generate a pseudorandom salt
     salt = urandom(20)  # Create a pseudorandom set of 20 bytes
     salt = salt.hex()  # 20 bytes converted into hex produces 40 characters
     hashable = salt + plain_text  # Concatenate salt and plain_text
-    hashable = hashable.encode('utf-8')  # convert to bytes
-    this_hash = hashlib.sha1(hashable).hexdigest()  # hash w/ SHA-1 and hex-digest
+    hashable = hashable.encode('utf-8')  # Convert to bytes
+    this_hash = hashlib.sha1(hashable).hexdigest()  # Hash w/ SHA-1 and hex-digest
 
-    # Prepend hash and return
+    # Prepend salt and return
     return salt + this_hash
 
 
 def check_hashed(plain_text: str, salt: str, hashed: str) -> bool:
-    """ TODO: Write this """
+    """ check_hashed takes a plain text password, a salt, and a hashed password (with the same salt prepended).
+     It hashes salt + plain_text and checks if the hashed password (every character after the first forty)
+     match. """
     # Hash salt + plain text
     hashable = salt + plain_text
     hashable = hashable.encode('utf-8')
@@ -94,7 +100,6 @@ def check_hashed(plain_text: str, salt: str, hashed: str) -> bool:
 
 def convert_access_type(access_type: str) -> AccessType:
     """ convert_access_type takes a string access type and converts it to an AccessType constant. """
-
     # Match the string access type to an AccessType
     match access_type:
         case "admin":
