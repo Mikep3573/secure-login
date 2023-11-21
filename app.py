@@ -61,9 +61,6 @@ def register():
     # Make sure we're looking at the correct attempts
     global attempts
 
-    # Reset attempts
-    attempts = 0
-
     # Get the request method
     request_method = request.method
 
@@ -85,6 +82,8 @@ def register():
                     # If username already taken, give failure message
                     return render_template("register.html", attempts=attempts, invalid_user=True)
                 else:
+                    # Reset attempts so user can login with new account
+                    attempts = 0
                     # If username not already taken, give success message
                     return render_template("register.html", attempts=attempts, invalid_user=False)
 
