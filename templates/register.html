@@ -10,6 +10,8 @@
     <body>
         <form method="POST">
             <div class="wrapper">
+                <!-- Displays Create Account header, username and password input boxes, create strong password, submit
+                new information button, and return to login page button by default -->
                 <h1>Create Account</h1>
                     <div class="input-box">
                         <input type="text" placeholder="Username" name="username" required>
@@ -22,11 +24,13 @@
                     <div class="password-generator">
                         <p>Create strong password? <a href="/register?create_pass=True">Create</a></p>
                     </div>
+                    <!-- Displays strong password if user wants a strong password -->
                     {% if create_pass == True %}
                     <div class="strong-pass">
                         <p>{{ password }}</p>
                     </div>
                     {% endif %}
+                    <!-- Displays full list of required password characteristics if invalid password entered -->
                     {% if invalid_pass == True %}
                     <div class="error">
                         <p>Invalid Password</p>
@@ -41,11 +45,13 @@
                         </ul>
                     </div>
                     {% endif %}
+                    <!-- If username is taken, display error message -->
                     {% if invalid_user == True %}
                     <div class="error">
                         <p>Username Taken</p>
                     </div>
                     {% endif %}
+                    <!-- If username is not taken, display account registered message -->
                     {% if invalid_user == False %}
                     <div class="success">
                         <p>Registered!</p>

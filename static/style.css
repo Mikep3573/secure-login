@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
-/* TODO: Doc this */
+
+/* Overall page styling */
 * {
     margin: 0;
     padding: 0;
@@ -16,10 +17,17 @@ body {
     background: url(wave.jpg) no-repeat center;
 }
 
+/* Only affects accept choice page text */
+h1 {
+    font-weight: 600;
+    color: #fff;
+}
+
+/* For the wrapper that appears in many of the html files */
 .wrapper {
     width: 420px;
     background: transparent;
-    color: #ffff;
+    color: #fff;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -51,6 +59,7 @@ body {
     padding: 20px 45px 20px 20px
 }
 
+/* Color of the input box placeholder */
 .input-box input::placeholder {
     color: #fff;
 }
@@ -102,6 +111,7 @@ body {
     color: red;
 }
 
+/* Set aside so the text isn't centered in the list */
 .wrapper .error ul li {
     color: red;
 }
@@ -134,6 +144,7 @@ body {
     font-weight: 600;
 }
 
+/* Set some parameters for hove effects */
 .register-link p a:hover {
     text-decoration: underline;
 }

@@ -10,6 +10,8 @@
     <body>
         <form method="POST">
             <div class="wrapper">
+            <!-- Displays Login header, username and password input boxes, and login button by default -->
+            <!-- Register new account and create strong password hypertext links are also displayed -->
                 <h1>Company Intranet Login</h1>
                     <div class="input-box">
                         <input type="text" placeholder="Username" name="username" required>
@@ -17,6 +19,8 @@
                     <div class="input-box">
                         <input type="password" placeholder="Password" name="password" required>
                     </div>
+                    <!-- User starts at 0 attempts, each new failed login attempts adds 1 (resets upon successful login
+                    or register. Once attempts >= 3, message is displayed and button is removed -->
                     {% if attempts < 3 %}
                     <button type="submit" class="btn">Login</button>
                     {% endif %}
@@ -32,11 +36,13 @@
                     <div class="password-generator">
                         <p>Create strong password? <a href="/?create_pass=True">Create</a></p>
                     </div>
+                    <!-- If user presses create strong password, strong password is displayed -->
                     {% if create_pass == True %}
                     <div class="strong-pass">
                         <p>{{ password }}</p>
                     </div>
                     {% endif %}
+                    <!-- If incorrect username or password, error is displayed -->
                     {% if incorrect == True %}
                     <div class="error">
                         <p>Username or Password Incorrect</p>
