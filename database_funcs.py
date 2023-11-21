@@ -64,7 +64,8 @@ def check_user_info(username: str, password: str) -> AccessType:
 
         # Query for entries containing that username
         for row in cur.execute("SELECT * FROM users WHERE username = ?", [username]):
-            if row[0] == username and row[1] == password:
+            # Check if username and hash of salt + given password is correct
+            if row[0] == username and check_hashed(password, row[1][:40], row[1]):
                 return convert_access_type(row[2])  # If entry found, return it's AccessType
 
         # If no entry found matching description
@@ -91,9 +92,12 @@ def insert_user_info(username: str, password: str, access_type: AccessType) -> b
         conn = sqlite3.connect('db/intranet_users.db')  # Connect to intranet_users.db
         cur = conn.cursor()  # Create a cursor for the database
 
+        # Hash the password and prepend the fixed length salt
+        pass_insert = hash_pw(password)
+
         # Store data to insert into table
         user_data = [
-            (username, password, access_type)
+            (username, pass_insert, access_type)
         ]
 
         # Attempt to insert user data

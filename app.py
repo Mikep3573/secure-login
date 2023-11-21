@@ -103,7 +103,6 @@ def intranet_menu():
     """ TODO: Write this """
     # Get the user's access type
     access_type = request.args.get("access_type")
-    print(access_type)
 
     # Render intranet menu with appropriate options
     return render_template("intranet_menu.html", access_type=access_type)

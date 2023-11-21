@@ -85,11 +85,11 @@ def check_hashed(plain_text: str, salt: str, hashed: str) -> bool:
     """ TODO: Write this """
     # Hash salt + plain text
     hashable = salt + plain_text
-    hashable.encode('utf-8')
+    hashable = hashable.encode('utf-8')
     this_hash = hashlib.sha1(hashable).hexdigest()
 
     # Return True or False if stored hash equals new hash
-    return this_hash == hashed
+    return this_hash == hashed[40:]
 
 
 def convert_access_type(access_type: str) -> AccessType:
