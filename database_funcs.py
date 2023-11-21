@@ -39,7 +39,7 @@ def create_db() -> bool:
             return True
 
         # Do exception handling
-        except BaseException:  # Return False upon unsuccessful completion (or database has been created already)
+        except BaseException:  # Return False upon unsuccessful completion
             return False
         finally:  # Close the objects
             if cur is not None:
