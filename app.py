@@ -3,7 +3,8 @@ Intranet Flask Routes
 Michael Piscione
 CS 2660/Fall 2023
 
-TODO: Write this
+Holds all the necessary functionality that occurs when a user moves to a certain route. Includes login functionality,
+registering functionality, and the menu functionality.
 """
 
 # Dependencies
@@ -21,7 +22,10 @@ attempts = 0
 
 @app.route("/", methods=["GET", "POST"])
 def login():
-    """ TODO: Write this """
+    """ login gets the username and password in a POST request, checks the information, and returns either
+     the menu (with their access type as a parameter) or the login menu again with failed attempts incremented.
+     If it is a GET request with the create_pass boolean flag set, it returns a randomly generated strong password.
+     If it is just a GET request with nothing else, it loads the login menu at its default state. """
     # Make sure we're looking at the correct attempts
     global attempts
 
@@ -57,7 +61,11 @@ def login():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    """ TODO: Write this """
+    """ register gets the username and password in a POST request. It checks that that username is available,
+     and that the password entered is acceptable. If both are true it inserts the new user into the 'users' table
+     with the NONE access type by default. If it is a GET request with the create_pass boolean flag set, it returns
+     a randomly generated strong password. If it is just a GET request with nothing else, it loads the register menu at
+     its default state."""
     # Make sure we're looking at the correct attempts
     global attempts
 
@@ -82,7 +90,7 @@ def register():
                     # If username already taken, give failure message
                     return render_template("register.html", attempts=attempts, invalid_user=True)
                 else:
-                    # Reset attempts so user can login with new account
+                    # Reset attempts so user can log in with new account
                     attempts = 0
                     # If username not already taken, give success message
                     return render_template("register.html", attempts=attempts, invalid_user=False)
@@ -99,7 +107,7 @@ def register():
 
 @app.route("/intranet_menu")
 def intranet_menu():
-    """ TODO: Write this """
+    """ intranet_menu simply displays only the menu options available given a certain access_type. """
     # Get the user's access type
     access_type = request.args.get("access_type")
 
@@ -109,5 +117,5 @@ def intranet_menu():
 
 @app.route("/accepted_choice")
 def accepted_choice():
-    """ TODO: Write this """
+    """ accepted_choice simply displays a message once the user selects a menu option. """
     return render_template("accepted_choice.html")
