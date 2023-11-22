@@ -45,6 +45,8 @@
                     </div>
                     {% endif %}
                     <!-- If incorrect username or password, error is displayed -->
+                    <!-- NOTE: No input validation here since, in theory, all registered users would have
+                    to go through the registration process which DOES validate input -->
                     {% if incorrect == True %}
                     <div class="error">
                         <p>Username or Password Incorrect</p>

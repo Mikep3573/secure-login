@@ -3,7 +3,7 @@ General Functions
 Michael Piscione
 CS 2660/Fall 2023
 
-gen_functions.py is a supplemental file used to store functions used throughout the project.
+gen_functions.py is a supplemental file used to store general use-case functions used throughout the project.
 Functions consist of checking password requirements and hashing passwords (among others).
 """
 

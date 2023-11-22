@@ -10,6 +10,10 @@
         <title>Intranet Menu</title>
     </head>
     <body>
+        <!-- NOTE: I decided simply not to display the buttons that an access type can't access.
+        If I were to display the buttons, I would make the buttons that they can't click go to /rejected_choice
+        or something to that effect. These would be buttons like Product Performance and Employee Management inside
+        the access_type == 'limited' if branch, for example. -->
         <!-- Displays the correct set of buttons based on access type
         NONE: Time Reporting and Exit
         LIMITED: NONE options, Accounting, and Projects

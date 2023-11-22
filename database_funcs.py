@@ -14,9 +14,6 @@ import sqlite3
 from classes.access_types import *
 from gen_functions import *
 
-# Database Made constant -> used to determine whether to create database
-DB_MADE = False
-
 
 def create_db() -> bool:
     """ Creates the 'intranet_users' database (for usernames and passwords) with a table 'users'. Returns True if
@@ -83,9 +80,9 @@ def check_user_info(username: str, password: str) -> AccessType:
 
 
 def insert_user_info(username: str, password: str, access_type: AccessType) -> bool:
-    """ Creates a new row in users table using the username, password, and access_level of a new user.
-    Each row is of the form username, password, access_level. Returns True or False upon successful or failed
-    insertion. """
+    """ Creates a new row in users table using the username, hash(salt + password), and access_level of a new user.
+    Each row is of the form username, hash(salt + password), access_level. Returns True or False upon successful or
+    failed insertion respectively. """
 
     # Attempt to insert validated user input
     try:
