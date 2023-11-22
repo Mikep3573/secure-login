@@ -78,22 +78,20 @@ def register():
         username = request.form.get("username")
         password = request.form.get("password")
 
-        # Check if that combination does not exist in the database, register new account if it doesn't
-        if check_user_info(username, password) == AccessType.NULL:
-            # Check if valid password
-            if not check_password(password):
-                # Render register.html with invalid password dialogue
-                return render_template("register.html", attempts=attempts, invalid_pass=True)
+        # Check if valid password
+        if not check_password(password):
+            # Render register.html with invalid password dialogue
+            return render_template("register.html", attempts=attempts, invalid_pass=True)
+        else:
+            # Attempt to insert new user info with 'none' access type
+            if not insert_user_info(username, password, AccessType.NONE):
+                # If username already taken, give failure message
+                return render_template("register.html", attempts=attempts, invalid_user=True)
             else:
-                # Attempt to insert new user info with 'none' access type
-                if not insert_user_info(username, password, AccessType.NONE):
-                    # If username already taken, give failure message
-                    return render_template("register.html", attempts=attempts, invalid_user=True)
-                else:
-                    # Reset attempts so user can log in with new account
-                    attempts = 0
-                    # If username not already taken, give success message
-                    return render_template("register.html", attempts=attempts, invalid_user=False)
+                # Reset attempts so user can log in with new account
+                attempts = 0
+                # If username not already taken, give success message
+                return render_template("register.html", attempts=attempts, invalid_user=False)
 
     # Check if the user wanted to generate a strong password and render accordingly
     create_pass = request.args.get("create_pass")
