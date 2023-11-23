@@ -11,7 +11,6 @@ NOTE: Some of this code comes from Prof. Eddy's SQLite example.
 
 # Dependencies
 import sqlite3
-from classes.access_types import *
 from gen_functions import *
 
 
