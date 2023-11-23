@@ -26,6 +26,16 @@ database in that directory if it does not exist already (same goes for the 'user
 There is currently no way of creating an account to have any other access type other than NONE (using the website), so in database_funcs.py simply call insert_user_info with
 your chosen username, password, and AccessType (found in classes/access_types.py). Note that the project description's required password format does not apply here.
 
+NOTE: I am including a .db file in the submission folder (including the 'users' table), with the users 
+
+USERNAME  PASSWORD	ACCESS_TYPE
+a			a			ADMIN
+l			l			LIMITED
+n			n			NONE
+
+I inserted directly into the table so this ignores the project's password spec. This is purely for testing purposes.
+This also may not work, directions for creating the database are as above.
+
 Running Project:
 
 Once setup is done (testing instructions are completed), you should simply have to click run in main.py. From here, you can use the hyperlink provided
