@@ -30,9 +30,9 @@ your chosen username, password, and AccessType (found in classes/access_types.py
 NOTE: I am including a .db file in the submission folder (including the 'users' table), with the users 
 
 USERNAME  PASSWORD	ACCESS_TYPE
-a			a			ADMIN
-l			l			LIMITED
-n			n			NONE
+a	  a		ADMIN
+l	  l	        LIMITED
+n	  n	        NONE
 
 I inserted directly into the table so this ignores the project's password spec. This is purely for testing purposes.
 This also may not work, directions for creating the database are as above.
